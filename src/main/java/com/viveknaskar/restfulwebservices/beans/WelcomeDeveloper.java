@@ -1,6 +1,6 @@
 package com.viveknaskar.restfulwebservices.beans;
 
-public class WelcomeDeveloperBean {
+public class WelcomeDeveloper {
 
     public String message;
 
@@ -12,7 +12,7 @@ public class WelcomeDeveloperBean {
         return message;
     }
 
-    public WelcomeDeveloperBean(String message) {
+    public WelcomeDeveloper(String message) {
         this.message = message;
     }
 
