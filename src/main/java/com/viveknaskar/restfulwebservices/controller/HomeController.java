@@ -2,6 +2,7 @@ package com.viveknaskar.restfulwebservices.controller;
 
 import com.viveknaskar.restfulwebservices.beans.WelcomeDeveloperBean;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -15,5 +16,10 @@ public class HomeController {
     @GetMapping(path = "/welcome-developers")
     public WelcomeDeveloperBean welcomeDevelopers() {
         return new WelcomeDeveloperBean("Welcome Developers");
+    }
+
+    @GetMapping(path = "/welcome-developers/{name}")
+    public WelcomeDeveloperBean welcomeDeveloper(@PathVariable String name) {
+        return new WelcomeDeveloperBean(String.format("Welcome %s", name));
     }
 }
