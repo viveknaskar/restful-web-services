@@ -1,12 +1,20 @@
 package com.viveknaskar.restfulwebservices.controller;
 
 import com.viveknaskar.restfulwebservices.beans.WelcomeDeveloper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Locale;
 
 @RestController
 public class HomeController {
+
+    @Autowired
+    private MessageSource messageSource;
 
     @GetMapping(path = "/welcome")
     public String welcomePage() {
@@ -21,5 +29,10 @@ public class HomeController {
     @GetMapping(path = "/welcome-developers/{name}")
     public WelcomeDeveloper welcomeDeveloper(@PathVariable String name) {
         return new WelcomeDeveloper(String.format("Welcome %s", name));
+    }
+
+    @GetMapping(path = "/hello-developer-internationalized")
+    public String helloDeveloperInternationalisation(@RequestHeader(name = "Accept-Language", required = false) Locale locale) {
+        return messageSource.getMessage("morning.greetings", null, locale);
     }
 }
