@@ -1,5 +1,7 @@
 package com.viveknaskar.restfulwebservices.beans;
 
+import net.minidev.json.annotate.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,6 +17,7 @@ public class Post {
      * Hence @ManyToOne annotation is used - Many posts to one user
      */
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     private User user;
 
     public Integer getId() {
