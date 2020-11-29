@@ -6,9 +6,11 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @ApiModel and @ApiModelProperty are the annotations for Swagger documentation
@@ -29,6 +31,14 @@ public class User {
     @Past
     @ApiModelProperty(notes = "Date of Birth cannot be a past date")
     private Date dateOfBirth;
+
+
+    /**
+     * A user can have many posts
+     * Hence @OneToMany annotation is used - One user, many posts
+     */
+    @OneToMany(mappedBy = "user")
+    private List<Post> posts;
 
     public User() {
     }
@@ -61,6 +71,14 @@ public class User {
 
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 
     @Override
