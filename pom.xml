@@ -59,6 +59,21 @@
 			<version>3.0.0</version>
 		</dependency>
 
+		<!-- Actuator dependency for monitoring -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+		<!-- To integrate the HAL (Hypertext Application Language) browser into our API -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-rest-hal-browser</artifactId>
+			<version>3.2.6.RELEASE</version>
+		</dependency>
+
+
+
 	</dependencies>
 
 	<build>
