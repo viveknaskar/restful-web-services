@@ -30,6 +30,9 @@ public class User {
     @ApiModelProperty(notes = "Date of Birth cannot be a past date")
     private Date dateOfBirth;
 
+    public User() {
+    }
+
     public User(Integer id, String name, Date dateOfBirth) {
         this.id = id;
         this.name = name;
