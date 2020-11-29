@@ -59,7 +59,7 @@ public class UserJPAController {
 
     @PostMapping("/jpa/users")
     public ResponseEntity createUser(@Valid @RequestBody User user) {
-        User createdUser = userDaoService.save(user);
+        User createdUser = userRepository.save(user);
 
         /** ServletUriComponentsBuilder extends UriComponentsBuilder.
          * So, ServletUriComponentsBuilder is UriComponentsBuilder with additional static factory methods
@@ -75,10 +75,7 @@ public class UserJPAController {
 
     @DeleteMapping("/jpa/users/{id}")
     public void deleteUser(@PathVariable int id) {
-        User user = userDaoService.deleteById(id);
-        if (user==null) {
-            throw new UserNotFoundException("id: " + id);
-        }
+        userRepository.deleteById(id);
     }
 
 }
